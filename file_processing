@@ -1,0 +1,39 @@
+#virtual_garage.py
+#August,2022
+#Youssoufou Bakayoko
+#CIS245
+#Script to create program that performs file processing activities
+# import the OS library
+import OS
+
+#Ask the user to iput the directory address
+directory_name=input("Enter the directory you would like to save the new file in: ")
+#Ask the user to input the file name of the file to be created
+file_name=input("Enter the filename: ")
+#Ask the user to input his/her name
+user_name=input("Enter your name: ")
+
+user_address=input("Enter your address: ")
+
+user_phone_number=input("Enter your phone number: ")
+#check to see if the directory exists
+#if yes,then write a new file and open it in a write "w" mode 
+if OS.path.isdir(directory_name):      
+  write_file=open(OS.path.join(directory_name,file_name),"W")
+  #write the information entered by user in a comma seperated line
+  write_file.write(user_name + str(",") + user_address + str(",") + user_phone_number)
+
+  #close the opened file after wirte
+  write_file.close()
+  # print the data message
+  print("The data in file is: ")
+  # read the same file in read "r" Mode
+  read_file= open(OS.path.join(directory_name,file_name),"r")
+  
+  #read the whole data of the file and print
+  print(read_file.read())
+  #close the opened file
+  read_file.closed()
+#if directory not exist, then print the error
+else:
+  print("This directory does not exist, please try again!")
